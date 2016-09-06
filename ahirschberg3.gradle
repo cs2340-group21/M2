@@ -1,0 +1,20 @@
+//Set a default task, so if I don't give a task, this (these) will be executed
+defaultTasks  'jar'
+
+//Import a bunch of java related tasks like compileJava, compileJavaTest, clean, javadoc, jar
+apply plugin: 'java'
+//Define the contents of the jar file
+jar {
+    manifest { 
+        attributes 'Main-Class': 'edu.gatech.oad.antlab.pkg1.AntLabMain'
+    }
+}
+dependencies {
+  compile files('lib/resources.jar')
+  runtime files('lib/resources.jar')
+}
+
+//Set up a location of repositories so that any needed library dependencies can be downloaded
+repositories {
+    mavenCentral()
+}
