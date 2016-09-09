@@ -1,0 +1,20 @@
+//Sets a default task to run when other commands are not being run
+defaultTasks 'jar'
+
+//Import the java plugin to be able to use java related tasks
+apply plugin: 'java'
+
+//Define the jar file
+jar {
+    manifest {
+        attributes 'Main-Class': 'edu.gatech.oad.antlab.pkg1.AntLabMain', 'Class-Path' : '../../lib/resources.jar'
+    }
+}
+dependencies {
+    compile fileTree(dir: 'lib', include: ['*.jar'])
+}
+
+//Set the location of repositories for this project
+repositories {
+    mavenCentral()
+}
